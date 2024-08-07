@@ -9,8 +9,8 @@ java {
     withSourcesJar()
 }
 
-task testJunit(type: Test) {
-    useJUnitPlatform()
+test {
+  useJUnitPlatform()
 }
 
 repositories {

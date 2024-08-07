@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="CatalogSchema.xsd ">
+
+    <effectiveDate>2021-01-02T00:00:08+01:00</effectiveDate>
+    <catalogName>Catalog</catalogName>
+
+    <recurringBillingMode>IN_ADVANCE</recurringBillingMode>
+
+    <currencies>
+        <currency>EUR</currency>
+    </currencies>
+
+    <products>
+        <product name="Membership">
+            <category>BASE</category>
+        </product>
+    </products>
+
+    <rules>
+        <changePolicy>
+            <changePolicyCase>
+                <phaseType>TRIAL</phaseType>
+                <policy>END_OF_TERM</policy>
+            </changePolicyCase>
+            <changePolicyCase>
+                <phaseType>EVERGREEN</phaseType>
+                <policy>END_OF_TERM</policy>
+            </changePolicyCase>
+            <changePolicyCase>
+                <policy>END_OF_TERM</policy>
+            </changePolicyCase>
+        </changePolicy>
+
+        <changeAlignment>
+            <changeAlignmentCase>
+                <alignment>START_OF_SUBSCRIPTION</alignment>
+            </changeAlignmentCase>
+        </changeAlignment>
+
+        <cancelPolicy>
+            <cancelPolicyCase>
+                <phaseType>FIXEDTERM</phaseType>
+                <policy>END_OF_TERM</policy>
+            </cancelPolicyCase>
+            <cancelPolicyCase>
+                <policy>END_OF_TERM</policy>
+            </cancelPolicyCase>
+        </cancelPolicy>
+
+        <billingAlignment>
+            <billingAlignmentCase>
+                <alignment>SUBSCRIPTION</alignment>
+            </billingAlignmentCase>
+        </billingAlignment>
+    </rules>
+
+    <plans>
+        <plan name="standard-monthly">
+            <product>Membership</product>
+            <initialPhases>
+                <phase type="TRIAL">
+                    <duration>
+                        <unit>DAYS</unit>
+                        <number>7</number>
+                    </duration>
+                    <fixed>
+                        <fixedPrice>
+                            <!-- empty price implies EUR 0,00 -->
+                        </fixedPrice>
+                    </fixed>
+                </phase>
+            </initialPhases>
+            <finalPhase type="EVERGREEN">
+                <duration>
+                    <unit>UNLIMITED</unit>
+                </duration>
+                <recurring>
+                    <billingPeriod>MONTHLY</billingPeriod>
+                    <recurringPrice>
+                        <price>
+                            <currency>EUR</currency>
+                            <value>16.90</value>
+                        </price>
+                    </recurringPrice>
+                </recurring>
+            </finalPhase>
+        </plan>
+    </plans>
+
+    <priceLists>
+        <defaultPriceList name="DEFAULT">
+            <plans>
+                <plan>standard-monthly</plan>
+            </plans>
+        </defaultPriceList>
+    </priceLists>
+
+</catalog>
